@@ -41,7 +41,7 @@ amazon-bedrock/
 
 ## Code Review and Analysis
 
-### CDK Stack (image_generation_stack.py)
+### CDK Stack ([image_generation_stack.py](./image-generation/image_generation/image_generation_stack.py))
 
 Let's break down the main components:
 
