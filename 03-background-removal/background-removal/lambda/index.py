@@ -7,6 +7,8 @@ import io
 import json
 import logging
 import boto3
+import os
+from datetime import datetime
 
 from botocore.exceptions import ClientError
 
@@ -21,6 +23,46 @@ class ImageError(Exception):
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO)
 
+def download_image_from_s3(bucket_name, object_key, s3_client=None):
+    """
+    Download an image from S3 and return it as base64 string.
+    
+    Args:
+        bucket_name (str): The S3 bucket name
+        object_key (str): The S3 object key (file path)
+        s3_client: Optional S3 client (will create one if not provided)
+    
+    Returns:
+        str: Base64 encoded image data
+    """
+    if s3_client is None:
+        s3_client = boto3.client('s3')
+    
+    try:
+        logger.info(f"Downloading image from S3: s3://{bucket_name}/{object_key}")
+        
+        # Download the file from S3
+        response = s3_client.get_object(Bucket=bucket_name, Key=object_key)
+        image_bytes = response['Body'].read()
+        
+        # Convert to base64
+        base64_image = base64.b64encode(image_bytes).decode('utf-8')
+        
+        logger.info(f"Successfully downloaded image from S3, size: {len(image_bytes)} bytes")
+        return base64_image
+        
+    except ClientError as e:
+        error_code = e.response['Error']['Code']
+        if error_code == 'NoSuchBucket':
+            raise ImageError(f"S3 bucket '{bucket_name}' does not exist")
+        elif error_code == 'NoSuchKey':
+            raise ImageError(f"S3 object '{object_key}' does not exist in bucket '{bucket_name}'")
+        elif error_code == 'AccessDenied':
+            raise ImageError(f"Access denied to S3 object s3://{bucket_name}/{object_key}")
+        else:
+            raise ImageError(f"Error downloading from S3: {e}")
+    except Exception as e:
+        raise ImageError(f"Unexpected error downloading from S3: {str(e)}")
 
 def generate_image(model_id, body):
     """
@@ -69,10 +111,28 @@ def index(event, context):
                             format="%(levelname)s: %(message)s")
 
         model_id = 'amazon.titan-image-generator-v2:0'
+        s3_client = boto3.client('s3')
 
-        # Read image from file and encode it as base64 string.
-        with open("/path/to/image", "rb") as image_file:
-            input_image = base64.b64encode(image_file.read()).decode('utf8')
+        # Get bucket name from environment variable
+        bucket_name = os.environ.get('S3_BUCKET_NAME')
+        if not bucket_name:
+            raise ValueError("S3_BUCKET_NAME environment variable is required")
+        
+        # Get input key from payload
+        input_key = event['input_key']
+        if not input_key:
+            raise ValueError("Missing required parameter: input_key")
+
+        # Generate output key (always save to outputs/ folder)
+        filename = os.path.basename(input_key)
+        name, ext = os.path.splitext(filename)
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        output_key = f"outputs/{name}_bg_removed_{timestamp}.png"
+
+        logger.info(f"Processing: s3://{bucket_name}/{input_key} -> s3://{bucket_name}/{output_key}")
+
+        # Download image from S3
+        input_image = download_image_from_s3(bucket_name, input_key, s3_client)
 
         body = json.dumps({
             "taskType": "BACKGROUND_REMOVAL",
@@ -83,6 +143,25 @@ def index(event, context):
 
         image_bytes = generate_image(model_id=model_id,
                                      body=body)
+    
+        response_s3=s3_client.put_object(
+            Bucket=bucket_name,
+            Body=image_bytes,
+            Key=output_key)
+
+        generate_presigned_url = s3_client.generate_presigned_url(
+                'get_object', 
+                Params={
+                        'Bucket':bucket_name,
+                        'Key':output_key
+                    },
+                ExpiresIn=3600
+            )
+        print(generate_presigned_url)
+        return {
+            'statusCode': 200,
+            'body': generate_presigned_url
+        }
 
     except ClientError as err:
         message = err.response["Error"]["Message"]
