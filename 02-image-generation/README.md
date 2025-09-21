@@ -107,7 +107,7 @@ api = apigw.RestApi(
 - RESTful API design
 - Supports both GET and POST methods
 
-### Lambda Function (lambda/index.py)
+### Lambda Function ([lambda/index.py](./image-generation/lambda/index.py))
 
 #### Image Generation Logic
 ```python
@@ -149,9 +149,8 @@ The main handler processes requests and returns presigned URLs for easy image ac
 
 1. **Clone and navigate to source code**:
    ```bash
-   mkdir image-generation-project
-   cd image-generation-project
-   # Create your project structure and add the code files
+   git clone https://github.com/anveshmuppeda/amazon-bedrock.git
+   cd amazon-bedrock/02-image-generation/image-generation
    ```
 
 2. Create a virtualenv on MacOS and Linux:
