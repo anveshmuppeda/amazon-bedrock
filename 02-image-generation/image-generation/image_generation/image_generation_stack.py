@@ -30,6 +30,7 @@ class ImageGenerationStack(Stack):
             self, "ImageGeneratorFunction",
             runtime=_lambda.Runtime.PYTHON_3_13,
             function_name="ImageGeneratorUsingTitanG1",
+            description="Generates images using Amazon Titan Image Generator G1 model on demand.",
             handler="index.index", 
             code=_lambda.Code.from_asset("lambda"),  # This uses your local lambda folder
             timeout=Duration.seconds(300),
@@ -83,12 +84,13 @@ class ImageGenerationStack(Stack):
             request_templates={"application/json": '{"statusCode": "200"}'}
         )
 
-        # Add GET method to the API
+        # Add GET & POST methods to the API
         generate_resource = api.root.add_resource("generate-image")
         generate_resource.add_method(
             "GET", 
-            lambda_integration,
-            request_parameters={
-                "method.request.querystring.prompt": True  # Make prompt query parameter required
-            }
+            lambda_integration
+        )
+        generate_resource.add_method(
+            "POST", 
+            lambda_integration
         )
