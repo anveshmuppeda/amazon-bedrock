@@ -30,7 +30,7 @@ class BackgroundRemovalStack(Stack):
             self, "ImageBackgroundRemovalFunction",
             runtime=_lambda.Runtime.PYTHON_3_13,
             function_name="ImageBackgroundRemovalUsingTitanG1",
-            description="Remove Image Background using Amazon Titan Image Generator G1 model on demand.",
+            description="Remove Image Background using Amazon Titan Image Generator V2 model on demand.",
             handler="index.lambda_handler", 
             code=_lambda.Code.from_asset("lambda"),  # This uses your local lambda folder
             timeout=Duration.seconds(300),
@@ -70,7 +70,7 @@ class BackgroundRemovalStack(Stack):
         api = apigw.RestApi(
             self, "ImageBackgroundRemovalService",
             rest_api_name="Image Background Removal Service",
-            description="This service removes the backgroumd for images using Amazon Bedrock Titan Image Generator.",
+            description="This service removes the backgroumd for images using Amazon Bedrock Titan Image Generator V2.",
             default_cors_preflight_options=apigw.CorsOptions(
                 allow_origins=apigw.Cors.ALL_ORIGINS,
                 allow_methods=apigw.Cors.ALL_METHODS,
@@ -82,7 +82,7 @@ class BackgroundRemovalStack(Stack):
         lambda_integration = apigw.LambdaIntegration(
             bg_removal_function,
             proxy=False,
-            request_templates={"application/json": '{"prompt": "$input.params(\'prompt\')"}'},
+            request_templates={"application/json": '{"input_key": "$input.params(\'input_key\')"}'},
             integration_responses=[
                 apigw.IntegrationResponse(
                     status_code="200",
@@ -92,12 +92,12 @@ class BackgroundRemovalStack(Stack):
         )
 
         # Add GET & POST methods to the API
-        generate_resource = api.root.add_resource("generate-image")
-        generate_resource.add_method(
+        remove_bg_resource = api.root.add_resource("image-bg-removeal")
+        remove_bg_resource.add_method(
             "GET", 
             lambda_integration,
             request_parameters={
-                "method.request.querystring.prompt": True  # Make prompt query parameter required
+                "method.request.querystring.input_key": True  # Make input_key query parameter required
             },
             method_responses=[
                 apigw.MethodResponse(
