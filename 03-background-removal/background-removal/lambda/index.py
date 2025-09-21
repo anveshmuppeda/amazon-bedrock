@@ -60,7 +60,7 @@ def generate_image(model_id, body):
     return image_bytes
 
 
-def main():
+def index(event, context):
     """
     Entrypoint for Amazon Titan Image Generator V2 example.
     """
@@ -96,7 +96,3 @@ def main():
     else:
         print(
             f"Finished generating image with Amazon Titan Image Generator V2 model {model_id}.")
-
-
-if __name__ == "__main__":
-    main()
