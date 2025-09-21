@@ -6,6 +6,7 @@ import io
 import json
 import logging
 import boto3
+import os
 
 from botocore.exceptions import ClientError
 client_s3 = boto3.client('s3')
@@ -72,6 +73,11 @@ def index(event, context):
 
     prompt=event['prompt']
 
+    # Get bucket name from environment variable
+    bucket_name = os.environ.get('IMAGE_SOURCE_BUCKET')
+    if not bucket_name:
+        raise ValueError("IMAGE_SOURCE_BUCKET environment variable not set")
+
     #prompt = """A photograph of a cup of coffee from the side."""
 
     body = json.dumps({
@@ -97,14 +103,14 @@ def index(event, context):
         image_name = 'imageName'+ datetime.datetime.today().strftime('%Y-%M-%D-%M-%S') + '.png'
     
         response_s3=client_s3.put_object(
-            Bucket='anveshmuppeda002',
+            Bucket=bucket_name,
             Body=image_bytes,
             Key=image_name)
 
         generate_presigned_url = client_s3.generate_presigned_url(
                 'get_object', 
                 Params={
-                        'Bucket':'anveshmuppeda002',
+                        'Bucket':bucket_name,
                         'Key':image_name
                     },
                 ExpiresIn=3600
