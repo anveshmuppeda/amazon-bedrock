@@ -81,16 +81,30 @@ class ImageGenerationStack(Stack):
         # Create Lambda integration
         lambda_integration = apigw.LambdaIntegration(
             image_generator_function,
-            request_templates={"application/json": '{"statusCode": "200"}'}
+            proxy=False,
+            request_templates={"application/json": '{"prompt": "$input.params(\'prompt\')"}'},
+            integration_responses=[
+                apigw.IntegrationResponse(
+                    status_code="200",
+                    content_handling=apigw.ContentHandling.CONVERT_TO_TEXT
+                )
+            ]
         )
 
         # Add GET & POST methods to the API
         generate_resource = api.root.add_resource("generate-image")
         generate_resource.add_method(
             "GET", 
-            lambda_integration
-        )
-        generate_resource.add_method(
-            "POST", 
-            lambda_integration
+            lambda_integration,
+            request_parameters={
+                "method.request.querystring.prompt": True  # Make prompt query parameter required
+            },
+            method_responses=[
+                apigw.MethodResponse(
+                    status_code="200",
+                    response_models={
+                        "application/json": apigw.Model.EMPTY_MODEL
+                    }
+                )
+            ]
         )
