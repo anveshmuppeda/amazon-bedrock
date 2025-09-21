@@ -102,7 +102,7 @@ guide-name/
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/your-username/amazon-bedrock.git
+git clone https://github.com/anveshmuppeda/amazon-bedrock.git
 cd amazon-bedrock
 ```
 
@@ -113,7 +113,7 @@ python -m venv bedrock-env
 source bedrock-env/bin/activate  # On Windows: bedrock-env\Scripts\activate
 
 # Install global dependencies
-pip install aws-cdk-lib constructs
+pip install -r requirements.txt
 ```
 
 ### 3. Bootstrap CDK (First Time Only)
@@ -196,16 +196,16 @@ Implement text embeddings for semantic search and similarity matching.
 
 We're continuously adding new guides! Here's what's coming next:
 
-| Guide | Level | Status | ETA |
-|-------|-------|--------|-----|
-| **05. RAG Implementation** | Advanced | 🏗️ In Progress | Q4 2024 |
-| **06. Chatbot with Memory** | Intermediate | 📋 Planned | Q1 2025 |
-| **07. Document Analysis** | Advanced | 📋 Planned | Q1 2025 |
-| **08. Multi-Modal AI** | Expert | 📋 Planned | Q2 2025 |
-| **09. Model Fine-Tuning** | Expert | 📋 Planned | Q2 2025 |
-| **10. Production Monitoring** | Advanced | 📋 Planned | Q2 2025 |
+| Guide | Level | Status |
+|-------|-------|--------|
+| **RAG Implementation** | Advanced | 🏗️ In Progress |
+| **Chatbot with Memory** | Intermediate | 📋 Planned |
+| **Document Analysis** | Advanced | 📋 Planned |
+| **Multi-Modal AI** | Expert | 📋 Planned |
+| **Model Fine-Tuning** | Expert | 📋 Planned |
+| **Production Monitoring** | Advanced | 📋 Planned |
 
-**Want to suggest a guide?** [Open an issue](https://github.com/your-username/amazon-bedrock/issues) with the tag `guide-request`.
+**Want to suggest a guide?** [Open an issue](https://github.com/anveshmuppeda/amazon-bedrock/issues) with the tag `guide-request`.
 
 ## 💻 Usage
 
@@ -228,6 +228,7 @@ We're continuously adding new guides! Here's what's coming next:
 
 4. **Deploy the infrastructure:**
    ```bash
+   cd image-generation  # Adjust path as needed
    cdk deploy
    ```
 
@@ -281,13 +282,6 @@ When contributing a new guide, please include:
 
 ### Estimated Costs per Guide
 
-| Guide | AWS Services Used | Estimated Cost* |
-|-------|------------------|-----------------|
-| Fundamentals | Lambda, Bedrock | $0.50 - $1.00 |
-| Image Generation | Lambda, Bedrock, S3, API Gateway | $2.00 - $5.00 |
-| Background Removal | Lambda, Bedrock, S3 | $1.50 - $3.00 |
-| Generate Embedding | Lambda, Bedrock | $1.00 - $2.00 |
-
 *\*Costs are estimates for testing/learning purposes and may vary based on usage*
 
 ### Cost Optimization Tips
@@ -303,8 +297,8 @@ When contributing a new guide, please include:
 ### Getting Help
 
 - 📖 **Documentation:** Start with the specific guide's README
-- 🐛 **Issues:** [GitHub Issues](https://github.com/your-username/amazon-bedrock/issues) for bugs and questions
-- 💬 **Discussions:** [GitHub Discussions](https://github.com/your-username/amazon-bedrock/discussions) for general questions
+- 🐛 **Issues:** [GitHub Issues](https://github.com/anveshmuppeda/amazon-bedrock/issues) for bugs and questions
+- 💬 **Discussions:** [GitHub Discussions](https://github.com/anveshmuppeda/amazon-bedrock/discussions) for general questions
 - 📧 **Email:** [your-email@domain.com] for private inquiries
 
 ### Common Issues
@@ -348,10 +342,10 @@ copies of the Software...
 
 ## 📈 Repository Stats
 
-![GitHub stars](https://img.shields.io/github/stars/your-username/amazon-bedrock?style=social)
-![GitHub forks](https://img.shields.io/github/forks/your-username/amazon-bedrock?style=social)
-![GitHub issues](https://img.shields.io/github/issues/your-username/amazon-bedrock)
-![GitHub last commit](https://img.shields.io/github/last-commit/your-username/amazon-bedrock)
+![GitHub stars](https://img.shields.io/github/stars/anveshmuppeda/amazon-bedrock?style=social)
+![GitHub forks](https://img.shields.io/github/forks/anveshmuppeda/amazon-bedrock?style=social)
+![GitHub issues](https://img.shields.io/github/issues/anveshmuppeda/amazon-bedrock)
+![GitHub last commit](https://img.shields.io/github/last-commit/anveshmuppeda/amazon-bedrock)
 
 ---
 
