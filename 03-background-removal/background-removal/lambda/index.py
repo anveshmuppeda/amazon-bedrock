@@ -3,13 +3,11 @@ Shows how to generate an image with background removal with the
 Amazon Titan Image Generator G1 V2 model (on demand).
 """
 import base64
-import io
 import json
 import logging
 import boto3
 import os
 from datetime import datetime
-
 from botocore.exceptions import ClientError
 
 
@@ -22,6 +20,7 @@ class ImageError(Exception):
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO)
+
 
 def download_image_from_s3(bucket_name, object_key, s3_client=None):
     """
@@ -64,6 +63,7 @@ def download_image_from_s3(bucket_name, object_key, s3_client=None):
     except Exception as e:
         raise ImageError(f"Unexpected error downloading from S3: {str(e)}")
 
+
 def generate_image(model_id, body):
     """
     Generate an image using Amazon Titan Image Generator V2 model on demand.
@@ -102,14 +102,11 @@ def generate_image(model_id, body):
     return image_bytes
 
 
-def index(event, context):
+def lambda_handler(event, context):
     """
     Entrypoint for Amazon Titan Image Generator V2 example.
     """
     try:
-        logging.basicConfig(level=logging.INFO,
-                            format="%(levelname)s: %(message)s")
-
         model_id = 'amazon.titan-image-generator-v2:0'
         s3_client = boto3.client('s3')
 
@@ -141,37 +138,30 @@ def index(event, context):
             }
         })
 
-        image_bytes = generate_image(model_id=model_id,
-                                     body=body)
+        image_bytes = generate_image(model_id=model_id, body=body)
     
-        response_s3=s3_client.put_object(
+        s3_client.put_object(
             Bucket=bucket_name,
             Body=image_bytes,
             Key=output_key)
 
-        generate_presigned_url = s3_client.generate_presigned_url(
+        presigned_url = s3_client.generate_presigned_url(
                 'get_object', 
                 Params={
-                        'Bucket':bucket_name,
-                        'Key':output_key
+                        'Bucket': bucket_name,
+                        'Key': output_key
                     },
                 ExpiresIn=3600
             )
-        print(generate_presigned_url)
+        
         return {
             'statusCode': 200,
-            'body': generate_presigned_url
+            'body': presigned_url
         }
 
-    except ClientError as err:
-        message = err.response["Error"]["Message"]
-        logger.error("A client error occurred: %s", message)
-        print("A client error occured: " +
-              format(message))
-    except ImageError as err:
-        logger.error(err.message)
-        print(err.message)
-
-    else:
-        print(
-            f"Finished generating image with Amazon Titan Image Generator V2 model {model_id}.")
+    except Exception as err:
+        logger.error(f"Error: {str(err)}")
+        return {
+            'statusCode': 500,
+            'body': f'Error: {str(err)}'
+        }

@@ -31,11 +31,11 @@ class BackgroundRemovalStack(Stack):
             runtime=_lambda.Runtime.PYTHON_3_13,
             function_name="ImageBackgroundRemovalUsingTitanG1",
             description="Remove Image Background using Amazon Titan Image Generator G1 model on demand.",
-            handler="index.index", 
+            handler="index.lambda_handler", 
             code=_lambda.Code.from_asset("lambda"),  # This uses your local lambda folder
             timeout=Duration.seconds(300),
             environment={
-                "IMAGE_SOURCE_BUCKET": image_source_bucket.bucket_name
+                "S3_BUCKET_NAME": image_source_bucket.bucket_name
             }
         )
 
@@ -68,9 +68,9 @@ class BackgroundRemovalStack(Stack):
 
         # Create API Gateway
         api = apigw.RestApi(
-            self, "ImageGenerationApi",
-            rest_api_name="Image Generation Service",
-            description="This service generates images using Amazon Bedrock Titan Image Generator.",
+            self, "ImageBackgroundRemovalService",
+            rest_api_name="Image Background Removal Service",
+            description="This service removes the backgroumd for images using Amazon Bedrock Titan Image Generator.",
             default_cors_preflight_options=apigw.CorsOptions(
                 allow_origins=apigw.Cors.ALL_ORIGINS,
                 allow_methods=apigw.Cors.ALL_METHODS,
