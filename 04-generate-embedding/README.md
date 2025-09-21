@@ -1,0 +1,1 @@
+# Generate Embedding usingAmazon Titan Embeddings G1 - Text model (on demand)  
