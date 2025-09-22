@@ -1,9 +1,77 @@
 # Amazon Bedrock Hands-On Guides 🚀
 
-![Amazon Bedrock](https://img.shields.io/badge/Amazon-Bedrock-FF9900?style=for-the-badge&logo=amazon-aws&logoColor=white)
-![AWS CDK](https://img.shields.io/badge/AWS-CDK-FF9900?style=for-the-badge&logo=amazon-aws&logoColor=white)
-![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
-![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
+<div align="center"> 
+  <h1>🚀 Amazon Bedrock Complete Hands‑On Guides 🌟 </h1>
+  <a href="https://github.com/anveshmuppeda/amazon-bedrock"><img src="https://readme-typing-svg.demolab.com?font=italic&weight=700&size=18&duration=4000&pause=1000&color=F727A9&center=true&width=600&lines=Learn+Amazon+Bedrock+with+hands-on+guides+and+practical+examples." alt="Typing SVG" /> </a>  
+  <br>
+  <img src="https://img.shields.io/github/forks/anveshmuppeda/amazon-bedrock" alt="Forks"/>
+  <img src="https://img.shields.io/github/stars/anveshmuppeda/amazon-bedrock" alt="Stars"/>
+  <img src="https://img.shields.io/github/watchers/anveshmuppeda/amazon-bedrock" alt="Watchers"/>
+  <img src="https://img.shields.io/github/last-commit/anveshmuppeda/amazon-bedrock" alt="Last Commit"/>
+  <img src="https://img.shields.io/github/commit-activity/m/anveshmuppeda/amazon-bedrock" alt="Commit Activity"/>
+  <img src="https://img.shields.io/github/repo-size/anveshmuppeda/amazon-bedrock" alt="Repo Size"/>
+  <img src="https://img.shields.io/static/v1?label=%F0%9F%8C%9F&message=If%20Useful&style=style=flat&color=BC4E99" alt="Star Badge"/>
+
+  <!-- <img src="https://awesome.re/badge.svg" alt="Awesome"/> -->
+  <a href="https://github.com/anveshmuppeda/amazon-bedrock/blob/main/LICENSE"> <img src="https://img.shields.io/github/license/anveshmuppeda/amazon-bedrock" alt="GitHub License"/> </a>
+  <a href="https://github.com/anveshmuppeda/amazon-bedrock/graphs/contributors"> <img src="https://img.shields.io/github/contributors/anveshmuppeda/amazon-bedrock" alt="GitHub contributors"/> </a>
+  <a href="https://github.com/anveshmuppeda/amazon-bedrock/issues">  <img src="https://img.shields.io/github/issues/anveshmuppeda/amazon-bedrock" alt="Open Issues"/> </a>
+  <a href="https://github.com/anveshmuppeda/amazon-bedrock/pulls"> <img src="https://img.shields.io/github/issues-pr-raw/anveshmuppeda/amazon-bedrock" alt="Open PRs"/> </a>
+  <a href="https://github.com/anveshmuppeda/amazon-bedrock/pulls"> <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square" alt="PRs Welcome"/> </a>
+</div>
+
+<!-- 
+[![Awesome](https://awesome.re/badge.svg)](https://awesome.re) 
+[![GitHub License](https://img.shields.io/github/license/anveshmuppeda/amazon-bedrock?color=blue)](https://github.com/anveshmuppeda/amazon-bedrock/blob/main/LICENSE) 
+[![GitHub contributors](https://img.shields.io/github/contributors/anveshmuppeda/amazon-bedrock)](https://github.com/anveshmuppeda/amazon-bedrock/graphs/contributors) 
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://github.com/anveshmuppeda/amazon-bedrock/pulls) 
+[![Star Badge](https://img.shields.io/static/v1?label=%F0%9F%8C%9F&message=If%20Useful&style=style=flat&color=BC4E99)](https://github.com/anveshmuppeda/amazon-bedrock)
+<img src="https://img.shields.io/static/v1?label=%F0%9F%8C%9F&message=If%20Useful&style=style=flat&color=BC4E99" alt="Star Badge"/> 
+
+-->  
+
+---  
+
+<div align="center">
+  <h2><b>Author: <a href="https://github.com/anveshmuppeda">Anvesh Muppeda</a> <img src="https://avatars.githubusercontent.com/u/115966808?v=4&s=20" alt="Profile Pic"/></b></h2>
+  <p> 
+    <i>Cloud Engineer | Kubernetes Developer | Open Source Contributor</i>
+  </p>
+  <a href="https://www.linkedin.com/in/anveshmuppeda/"> <img src="https://img.shields.io/badge/LinkedIn-Connect-blue?logo=linkedin&style=flat" alt="LinkedIn"/> </a>
+  <a href="https://twitter.com/Anvesh66743877"> <img src="https://img.shields.io/badge/Twitter-Follow-blue?logo=twitter&style=flat" alt="Twitter"/> </a>
+  <a href="https://medium.com/@muppedaanvesh"> <img src="https://img.shields.io/badge/Medium-Blog-black?logo=medium&style=flat" alt="Medium"/> </a>
+  <a href="mailto:muppedaanvesh@gmail.com"> <img src="https://img.shields.io/badge/Email-Contact%20Me-red?logo=gmail&style=flat" alt="Email"/> </a>
+  <a href="https://hub.docker.com/u/anvesh35"> <img src="https://img.shields.io/badge/DockerHub-Profile-blue?logo=docker&style=flat" alt="DockerHub"/> </a>
+</div>  
+
+---  
+ 
+<!-- 
+### **Author**: [Anvesh Muppeda ![Profile Pic](https://avatars.githubusercontent.com/u/115966808?v=4&s=20)](https://github.com/anveshmuppeda)  
+
+[![GitHub](https://img.shields.io/badge/GitHub-Profile-blue?logo=github&style=flat)](https://github.com/anveshmuppeda)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?logo=linkedin&style=flat)](https://www.linkedin.com/in/anveshmuppeda/)
+[![Twitter](https://img.shields.io/badge/Twitter-Follow-blue?logo=twitter&style=flat)](https://twitter.com/Anvesh66743877)
+[![Medium](https://img.shields.io/badge/Medium-Blog-black?logo=medium&style=flat)](https://medium.com/@muppedaanvesh)
+[![Email](https://img.shields.io/badge/Email-Contact%20Me-red?logo=gmail&style=flat)](mailto:muppedaanvesh@gmail.com)
+[![DockerHub](https://img.shields.io/badge/DockerHub-Profile-blue?logo=docker&style=flat)](https://hub.docker.com/u/anvesh35)
+-->  
+
+🚀 **Community-Driven Knowledge Hub**  
+*We welcome contributions to build the most comprehensive amazon-bedrock hands-on resource!*
+
+📢 **How You Can Help**:
+- 🐛 [Report Issues](https://github.com/anveshmuppeda/amazon-bedrock/issues)
+- 💡 [Suggest New Guides](https://github.com/anveshmuppeda/amazon-bedrock/discussions)
+- ✍️ [Submit Article Improvements](https://github.com/anveshmuppeda/amazon-bedrock/pulls)
+- 📚 [Add Missing Concepts](CONTRIBUTING.md#adding-content)
+- ✅ [Review Open PRs](https://github.com/anveshmuppeda/amazon-bedrock/pulls)
+
+[![Open Issues](https://img.shields.io/github/issues-raw/anveshmuppeda/amazon-bedrock)](https://github.com/anveshmuppeda/amazon-bedrock/issues)
+[![Good First Issues](https://img.shields.io/github/issues/anveshmuppeda/amazon-bedrock/good%20first%20issue)](https://github.com/anveshmuppeda/amazon-bedrock/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22)
+[![Open PRs](https://img.shields.io/github/issues-pr-raw/anveshmuppeda/amazon-bedrock)](https://github.com/anveshmuppeda/amazon-bedrock/pulls)
+
+---
 
 A comprehensive collection of hands-on guides for mastering Amazon Bedrock with Infrastructure as Code (IaC) using AWS CDK. This repository provides practical, real-world examples to help you learn and implement Amazon Bedrock's powerful AI/ML capabilities.
 
