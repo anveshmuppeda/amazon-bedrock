@@ -10,16 +10,16 @@ A comprehensive collection of hands-on guides for mastering Amazon Bedrock with 
 ## 📋 Table of Contents
 
 - [About](#-About)
-- [Prerequisites](#prerequisites)
-- [Repository Structure](#repository-structure)
-- [Getting Started](#getting-started)
-- [Available Guides](#available-guides)
-- [Upcoming Guides](#upcoming-guides)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [Cost Considerations](#cost-considerations)
-- [Support](#support)
-- [License](#license)
+- [Prerequisites](#-prerequisites)
+- [Repository Structure](#-repository-structure)
+- [Getting Started](#-getting-started)
+- [Available Guides](#-available-guides)
+- [Upcoming Guides](#-upcoming-guides)
+- [Usage](#-usage)
+- [Contributing](#-contributing)
+- [Cost Considerations](#-cost-considerations)
+- [Support](#-support)
+- [License](#-license)
 
 ## 🎯 About
 
