@@ -9,7 +9,7 @@ A comprehensive collection of hands-on guides for mastering Amazon Bedrock with 
 
 ## 📋 Table of Contents
 
-- [About](#🎯+About)
+- [About](#-About)
 - [Prerequisites](#prerequisites)
 - [Repository Structure](#repository-structure)
 - [Getting Started](#getting-started)
