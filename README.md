@@ -1,5 +1,3 @@
-# Amazon Bedrock Hands-On Guides 🚀
-
 <div align="center"> 
   <h1>🚀 Amazon Bedrock Complete Hands‑On Guides 🌟 </h1>
   <a href="https://github.com/anveshmuppeda/amazon-bedrock"><img src="https://readme-typing-svg.demolab.com?font=italic&weight=700&size=18&duration=4000&pause=1000&color=F727A9&center=true&width=600&lines=Learn+Amazon+Bedrock+with+hands-on+guides+and+practical+examples." alt="Typing SVG" /> </a>  
