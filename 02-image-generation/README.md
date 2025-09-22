@@ -1,5 +1,7 @@
 # Building an AI-Powered Image Generation API with Amazon Bedrock and AWS CDK
 
+![Image Generation](./img/01-aws-bedrock-image-create.png)
+
 ## Introduction
 
 In this tutorial, we'll build a serverless image generation API using Amazon Bedrock's Titan Image Generator G1 model. Our solution combines several AWS services to create a scalable, cost-effective image generation service that can be easily integrated into applications.
