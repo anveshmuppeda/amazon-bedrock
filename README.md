@@ -299,7 +299,6 @@ When contributing a new guide, please include:
 - 📖 **Documentation:** Start with the specific guide's README
 - 🐛 **Issues:** [GitHub Issues](https://github.com/anveshmuppeda/amazon-bedrock/issues) for bugs and questions
 - 💬 **Discussions:** [GitHub Discussions](https://github.com/anveshmuppeda/amazon-bedrock/discussions) for general questions
-- 📧 **Email:** [your-email@domain.com] for private inquiries
 
 ### Common Issues
 
@@ -339,13 +338,6 @@ copies of the Software...
 - **CDK Community** for excellent documentation and examples
 - **Contributors** who help improve these guides
 - **Open Source Community** for inspiration and best practices
-
-## 📈 Repository Stats
-
-![GitHub stars](https://img.shields.io/github/stars/anveshmuppeda/amazon-bedrock?style=social)
-![GitHub forks](https://img.shields.io/github/forks/anveshmuppeda/amazon-bedrock?style=social)
-![GitHub issues](https://img.shields.io/github/issues/anveshmuppeda/amazon-bedrock)
-![GitHub last commit](https://img.shields.io/github/last-commit/anveshmuppeda/amazon-bedrock)
 
 ---
 
