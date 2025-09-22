@@ -61,7 +61,7 @@
 📢 **How You Can Help**:
 - 🐛 [Report Issues](https://github.com/anveshmuppeda/amazon-bedrock/issues)
 - 💡 [Suggest New Guides](https://github.com/anveshmuppeda/amazon-bedrock/discussions)
-- ✍️ [Submit Article Improvements](https://github.com/anveshmuppeda/amazon-bedrock/pulls)
+- ✍️ [Submit Article Improvements](#-contributing)
 - 📚 [Add Missing Concepts](CONTRIBUTING.md#adding-content)
 - ✅ [Review Open PRs](https://github.com/anveshmuppeda/amazon-bedrock/pulls)
 
