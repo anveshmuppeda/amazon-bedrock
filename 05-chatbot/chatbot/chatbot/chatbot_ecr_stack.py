@@ -10,7 +10,7 @@ class ChatbotEcrStack(Stack):
     def __init__(self, scope: Construct, construct_id: str, **kwargs) -> None:
         super().__init__(scope, construct_id, **kwargs)
 
-        chatbot_ecr_repository = ecr.Repository(
+        self.chatbot_ecr_repository = ecr.Repository(
             self, "chatbotEcrRepository", 
             repository_name="chatbot-ecr-repository"
             )

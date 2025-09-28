@@ -60,8 +60,8 @@ class ChatbotEcsStack(Stack):
         container = task_definition.add_container(
             "ChatbotEcsContainer", 
             image=ecs.ContainerImage.from_registry(
-                f"{self.chatbot_ecr_stack.chatbot_ecr_repository.repository_uri}:latest"
-                )
+                    f"{chatbot_ecr_stack.chatbot_ecr_repository.repository_uri}:latest"
+                ),
             )
         service = ecs.FargateService(
             self,  "ChatbotEcsService", 
