@@ -5,14 +5,14 @@ from aws_cdk import (
 )
 
 
-class ImageGenerateEcrStack(Stack):
+class ImageGenerateBgRemoveEcrStack(Stack):
 
     def __init__(self, scope: Construct, construct_id: str, **kwargs) -> None:
         super().__init__(scope, construct_id, **kwargs)
 
         self.image_generator_ecr_repository = ecr.Repository(
-            self, "ImageGeneratorEcrRepository", 
-            repository_name="image-generate-ecr-repository"
+            self, "ImageGeneratorBgRemoverEcrRepository", 
+            repository_name="image-generator-bg-remover-ecr-repository"
             )
 
         

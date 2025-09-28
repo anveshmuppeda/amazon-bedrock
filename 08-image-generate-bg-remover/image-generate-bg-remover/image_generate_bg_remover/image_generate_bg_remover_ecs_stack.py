@@ -10,7 +10,7 @@ from aws_cdk import (
     aws_elasticloadbalancingv2 as elbv2
 )
 
-class ImageGenerateEcsStack(Stack):
+class ImageGenerateBgRemoveEcsStack(Stack):
     def __init__(self, scope: Construct, construct_id: str, image_gen_ecr_stack, **kwargs) -> None:
         super().__init__(scope, construct_id, **kwargs)
 
@@ -18,29 +18,29 @@ class ImageGenerateEcsStack(Stack):
         self.image_gen_ecr_stack = image_gen_ecr_stack
 
         vpc = ec2.Vpc(
-            self, "ImageGeneratorVpc",
+            self, "ImageGeneratorBgRemoveVpc",
             max_azs=3
         )
 
         ecs_cluster = ecs.Cluster(
-            self, "ImageGeneratorEcsCluster",
-            cluster_name="image-generator-ecs-cluster",
+            self, "ImageGeneratorBgRemoveEcsCluster",
+            cluster_name="image-generator-bg-remover-ecs-cluster",
             vpc=vpc
         )
 
         # Create log group FIRST
         log_group = aws_logs.LogGroup(
-            self, "ImageGeneratorLogGroup",
-            log_group_name="/ImageGenerator/logs",
+            self, "ImageGeneratorBgRemoveLogGroup",
+            log_group_name="/ImageGeneratorBgRemove/logs",
             retention=aws_logs.RetentionDays.ONE_WEEK,
             removal_policy=aws_cdk.RemovalPolicy.DESTROY
         )
 
         # Enhanced execution role with Bedrock permissions
         execution_role = iam.Role(
-            self, "ImageGeneratorEcsExecutionRole", 
+            self, "ImageGeneratorBgRemoveEcsExecutionRole", 
             assumed_by=iam.ServicePrincipal("ecs-tasks.amazonaws.com"), 
-            role_name="image-generator-ecs-execution-role"
+            role_name="image-generator-bg-remover-ecs-execution-role"
         )
 
         execution_role.add_to_policy(
@@ -60,9 +60,9 @@ class ImageGenerateEcsStack(Stack):
 
         # Task role for application permissions (Bedrock access)
         task_role = iam.Role(
-            self, "ImageGeneratorEcsTaskRole",
+            self, "ImageGeneratorBgRemoveEcsTaskRole",
             assumed_by=iam.ServicePrincipal("ecs-tasks.amazonaws.com"),
-            role_name="image-generator-ecs-task-role"
+            role_name="image-generator-bg-remover-ecs-task-role"
         )
 
         # Add Bedrock permissions to task role
@@ -81,17 +81,17 @@ class ImageGenerateEcsStack(Stack):
         
         # Task Definition with proper CPU/Memory and roles
         task_definition = ecs.FargateTaskDefinition(
-            self, "ImageGeneratorEcsTaskDef", 
+            self, "ImageGeneratorBgRemoveEcsTaskDef", 
             execution_role=execution_role,
             task_role=task_role,  # Added task role for Bedrock
-            family="image-generator-ecs-task-def",
+            family="image-generator-bg-remover-ecs-task-def",
             cpu=512,  # Increased for Streamlit + ML workloads
             memory_limit_mib=1024  # Increased for better performance
         )
         
         # Container with all required configurations
         container = task_definition.add_container(
-            "ImageGeneratorEcsContainer", 
+            "ImageGeneratorBgRemoveEcsContainer", 
             image=ecs.ContainerImage.from_registry(
                 f"{image_gen_ecr_stack.image_generator_ecr_repository.repository_uri}:latest"
             ),
@@ -101,7 +101,7 @@ class ImageGenerateEcsStack(Stack):
             },
             # Logging configuration
             logging=ecs.LogDrivers.aws_logs(
-                stream_prefix="ImageGenerator",
+                stream_prefix="ImageGeneratorBgRemove",
                 log_group=log_group
             ),
             # Port mapping for Streamlit
@@ -156,16 +156,16 @@ class ImageGenerateEcsStack(Stack):
 
         # Application Load Balancer
         alb = elbv2.ApplicationLoadBalancer(
-            self, "ImageGeneratorAlb",
+            self, "ImageGeneratorBgRemoveAlb",
             vpc=vpc,
             internet_facing=True,
             security_group=alb_security_group,
-            load_balancer_name="image-generator-alb"
+            load_balancer_name="image-generator-bg-remover-alb"
         )
 
         # Target Group for Streamlit
         target_group = elbv2.ApplicationTargetGroup(
-            self, "ImageGeneratorTargetGroup",
+            self, "ImageGeneratorBgRemoveTargetGroup",
             vpc=vpc,
             port=8501,
             protocol=elbv2.ApplicationProtocol.HTTP,
@@ -184,7 +184,7 @@ class ImageGenerateEcsStack(Stack):
 
         # ALB Listener
         listener = alb.add_listener(
-            "ImageGeneratorListener",
+            "ImageGeneratorBgRemoveListener",
             port=80,
             protocol=elbv2.ApplicationProtocol.HTTP,
             default_target_groups=[target_group]
@@ -192,10 +192,10 @@ class ImageGenerateEcsStack(Stack):
 
         # ECS Service
         service = ecs.FargateService(
-            self, "ImageGeneratorEcsService", 
+            self, "ImageGeneratorBgRemoveEcsService", 
             cluster=ecs_cluster, 
             task_definition=task_definition, 
-            service_name="image-generator-ecs-service",
+            service_name="image-generator-bg-remover-ecs-service",
             desired_count=1,
             security_groups=[ecs_security_group],
             vpc_subnets=ec2.SubnetSelection(
