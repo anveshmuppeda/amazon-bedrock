@@ -2,7 +2,7 @@ FROM --platform=linux/amd64  python:3.11-slim
 
 WORKDIR /app
 
-# ADD THIS LINE - Install curl for health checks
+# Install curl for health checks
 RUN apt-get update && apt-get install -y curl && rm -rf /var/lib/apt/lists/*
 
 COPY requirements.txt .
@@ -12,7 +12,7 @@ COPY source/ .
 
 EXPOSE 8501
 
-# IMPROVED health check with timing
+# Health check with timing
 HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3 \
     CMD curl --fail http://localhost:8501/_stcore/health || exit 1
 
