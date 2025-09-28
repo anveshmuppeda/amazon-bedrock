@@ -18,7 +18,7 @@ class ChatbotEcsStack(Stack):
         self.chatbot_ecr_stack = chatbot_ecr_stack
 
         vpc = ec2.Vpc(
-            self, "ecs-devops-vpc",  
+            self, "ChatbotVpc",
             max_azs=3
         )
 

@@ -65,3 +65,13 @@ docker info | grep "Server Platform"
 
 # Verify the image architecture after building
 docker inspect ecs-devops-repository:latest | grep Architecture
+
+
+# Deploy the ECR stack first
+```
+> cdk deploy ChatbotEcrStack
+```
+# Then deploy the ECS stack
+```
+> cdk deploy ChatbotEcsStack
+```
