@@ -12,15 +12,13 @@ from aws_cdk import (
 )
 
 
-class ChatbotStack(Stack):
+class ChatbotEcsStack(Stack):
 
-    def __init__(self, scope: Construct, construct_id: str, **kwargs) -> None:
+    def __init__(self, scope: Construct, construct_id: str, chatbot_ecr_stack, **kwargs) -> None:
         super().__init__(scope, construct_id, **kwargs)
 
-        chatbot_ecr_repository = ecr.Repository(
-            self, "ecs-devops-repository", 
-            repository_name="ecs-devops-repository"
-            )
+        # Store network stack reference
+        self.chatbot_ecr_stack = chatbot_ecr_stack
 
         vpc = ec2.Vpc(
             self,  "ecs-devops-vpc",  
@@ -62,7 +60,7 @@ class ChatbotStack(Stack):
         container = task_definition.add_container(
             "ChatbotEcsContainer", 
             image=ecs.ContainerImage.from_registry(
-                f"{chatbot_ecr_repository.repository_uri}:latest"
+                f"{self.chatbot_ecr_stack.chatbot_ecr_repository.repository_uri}:latest"
                 )
             )
         service = ecs.FargateService(
