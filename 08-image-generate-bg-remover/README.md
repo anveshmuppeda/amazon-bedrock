@@ -2,6 +2,8 @@
 
 A comprehensive web application that provides AI-powered image processing capabilities through a unified Streamlit interface. This project leverages Amazon Bedrock's Titan models to offer two main features: AI image generation from text prompts and intelligent background removal from existing images.
 
+![AI Agent Hub Screenshot](./img/02-aws-bedrock-image-bg-remover.gif)
+
 ## ✨ Features
 
 ### 🎨 AI Image Generator
