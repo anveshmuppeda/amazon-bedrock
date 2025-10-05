@@ -1,6 +1,6 @@
 # 🤖 Amazon Bedrock Chatbot with Memory
 
-**Level:** Intermediate | **Duration:** 60 minutes | **Cost:** ~$3.00
+![Chatbot Architecture](./img/chatbot-demo.gif)
 
 Build an intelligent chatbot with conversation memory using Amazon Bedrock, LangChain, and Streamlit. Deploy it on AWS ECS with complete infrastructure as code.
 
