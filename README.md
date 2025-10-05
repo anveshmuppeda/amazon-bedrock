@@ -229,32 +229,93 @@ Build a complete image generation API using Amazon Titan Image Generator.
 ---
 
 ### 🖼️ 03. Background Removal
-**Level:** Intermediate | **Duration:** 40 minutes | **Cost:** ~$1.50
+**Level:** Intermediate | **Duration:** 50 minutes | **Cost:** ~$2.00
 
-Create an intelligent background removal service for images.
+Create an intelligent background removal service using Amazon Titan Image Generator V2.
 
 **What you'll build:**
-- Image upload and processing pipeline
-- Background removal using AI models
-- Before/after image comparison
-- Batch processing capabilities
+- AI background removal API with S3 integration
+- RESTful service with API Gateway and Lambda
+- Presigned URL generation for secure image access
+- Production-ready infrastructure with CDK
 
-**Key concepts:** Image manipulation, computer vision, batch processing
+**Key concepts:** AI image processing, S3 integration, presigned URLs, error handling
 
 ---
 
 ### 🔤 04. Generate Embedding
-**Level:** Advanced | **Duration:** 60 minutes | **Cost:** ~$1.00
+**Level:** Intermediate | **Duration:** 45 minutes | **Cost:** ~$1.00
 
-Implement text embeddings for semantic search and similarity matching.
+Build a text embedding generation service using Amazon Titan Embeddings G1 model.
 
 **What you'll build:**
-- Text embedding generation
-- Vector similarity search
-- Semantic search API
-- Document clustering
+- Text embedding API that converts text to 1536-dimensional vectors
+- RESTful service with API Gateway and Lambda integration
+- Semantic search foundation for AI applications
+- Vector generation pipeline for machine learning workflows
 
-**Key concepts:** Vector embeddings, semantic search, similarity matching, NLP
+**Key concepts:** Text embeddings, vector dimensions, semantic applications, API design
+
+---
+
+### 🤖 05. Chatbot with Memory
+**Level:** Intermediate | **Duration:** 60 minutes | **Cost:** ~$3.00
+
+Build an intelligent chatbot with conversation memory using Amazon Bedrock, LangChain, and Streamlit.
+
+**What you'll build:**
+- Intelligent chatbot with conversation memory and context awareness
+- Streamlit web interface for interactive chat experience
+- AWS ECS deployment with Application Load Balancer
+- Conversation memory using LangChain's ConversationSummaryBufferMemory
+
+**Key concepts:** Conversation memory, LangChain integration, Streamlit state management, container orchestration
+
+---
+
+### 📚 06. RAG Server - Document Q&A
+**Level:** Advanced | **Duration:** 75 minutes | **Cost:** ~$4.00
+
+Build a production-ready Retrieval-Augmented Generation (RAG) system for intelligent Q&A over documents.
+
+**What you'll build:**
+- Document processing pipeline that converts PDFs to searchable vectors
+- Intelligent Q&A system that answers questions based on document content
+- Vector search engine using FAISS for fast similarity matching
+- RAG architecture combining retrieval and generation
+
+**Key concepts:** RAG architecture, vector embeddings, document processing, FAISS database, semantic search
+
+---
+
+### 🎨 07. Image Generation UI
+**Level:** Intermediate | **Duration:** 55 minutes | **Cost:** ~$3.50
+
+Build a beautiful web-based AI image generator using Amazon Titan Image Generator G1 and Streamlit.
+
+**What you'll build:**
+- Interactive web UI for AI image generation from text prompts
+- Real-time image generation using Amazon Titan Image Generator G1
+- Streamlit frontend with modern, responsive design
+- Image download functionality for saving generated images
+
+**Key concepts:** AI image generation, Streamlit development, session management, user experience design
+
+---
+
+### 🤖 08. AI Agent Hub - Image Generation & Background Removal
+**Level:** Advanced | **Duration:** 70 minutes | **Cost:** ~$5.00
+
+Build a comprehensive AI-powered image processing hub combining multiple AI capabilities in a unified interface.
+
+**What you'll build:**
+- Unified AI hub with multiple image processing capabilities
+- Text-to-image generation using Amazon Titan Image Generator G1
+- AI background removal using Amazon Titan Image Generator V2
+- Tabbed interface for seamless feature switching
+- Before/after comparisons and complete workflow pipelines
+
+**Key concepts:** Multi-feature AI applications, modular architecture, dual model integration, workflow design
 
 ---
 
