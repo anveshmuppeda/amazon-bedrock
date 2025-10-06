@@ -14,6 +14,8 @@ Build an intelligent chatbot with conversation memory using Amazon Bedrock, Lang
 
 ## 🏗️ Architecture Overview
 
+![Architecture Diagram](./img/03-aws-bedrock-chatbot.png)
+
 ```
 ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
 │   User Browser  │───►│  Application    │───►│   ECS Fargate   │
